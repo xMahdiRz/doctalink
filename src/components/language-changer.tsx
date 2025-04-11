@@ -5,7 +5,7 @@ import { setUserLocale, getUserLocale } from "@/services/locale";
 import { Button } from "@/components/ui/button";
 import { defaultLocale } from "@/i18n/config";
 
-export default function LocaleSwitcherSelect({}) {
+export function LocaleSwitcher({}) {
   const [isPending, startTransition] = useTransition();
   const [localeActive, setLocaleActive] = useState<string>(defaultLocale);
 

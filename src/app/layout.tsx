@@ -1,27 +1,38 @@
+import { ThemeProvider } from "next-themes";
+import { NextIntlClientProvider } from "next-intl";
+import { getUserLocale } from "@/services/locale";
 import "./globals.css";
 
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
-import ThemeProvider from "@/context/theme-provider";
-
-import { getUserLocale } from "@/services/locale";
+export const metadata = {
+  metadataBase: new URL(defaultUrl),
+  title: "Next.js App",
+  description: "A simple Next.js application",
+};
 
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-
-
   const locale = await getUserLocale();
-  const messages = await getMessages({ locale });
+  const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-background text-foreground">
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
