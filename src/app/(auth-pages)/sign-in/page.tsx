@@ -81,9 +81,9 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             <FormMessage message={searchParams} />
 
             <div className="text-center mt-6">
-              <p className="text-[#555555] text-sm font-aeonik font-normal">
+              <p className="text-[#555555] text-sm font-aeonik font-normal hover:underline">
                 Don't have an account?{" "}
-                <Link href="/signup" className="text-[#0AA462] font-medium">
+                <Link href="/user-selection" className="text-[#0AA462] font-medium">
                   Sign Up
                 </Link>
               </p>
