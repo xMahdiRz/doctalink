@@ -23,16 +23,16 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground ltr:font-aeonik rtl:font-aeonik">
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <ThemeProvider
+          {children}
+          {/* <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            {children}
-          </ThemeProvider>
+          </ThemeProvider> */}
         </NextIntlClientProvider>
       </body>
     </html>
