@@ -1,0 +1,60 @@
+<svg width="616" height="672" viewBox="0 0 616 672" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_2007_355)">
+    <rect width="616" height="672" rx="32" fill="#20504B"/>
+    <g opacity="0.1">
+    <mask id="mask0_2007_355" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-824" y="-336" width="1528" height="1529">
+    <ellipse cx="-60.0001" cy="428.481" rx="763.014" ry="763.648" fill="url(#paint0_linear_2007_355)"/>
+    </mask>
+    <g mask="url(#mask0_2007_355)">
+    <line x1="-745" y1="-0.3" x2="625" y2="-0.29988" stroke="white" stroke-width="0.6"/>
+    <line x1="-745" y1="106.82" x2="625" y2="106.82" stroke="white" stroke-width="0.6"/>
+    <line x1="-745" y1="213.94" x2="625" y2="213.941" stroke="white" stroke-width="0.6"/>
+    <line x1="-745" y1="321.061" x2="625" y2="321.061" stroke="white" stroke-width="0.6"/>
+    <line x1="-745" y1="428.181" x2="625" y2="428.181" stroke="white" stroke-width="0.6"/>
+    <line x1="-745" y1="535.301" x2="625" y2="535.301" stroke="white" stroke-width="0.6"/>
+    <line x1="-745" y1="642.421" x2="625" y2="642.422" stroke="white" stroke-width="0.6"/>
+    <line x1="97.7769" y1="856.962" x2="97.777" y2="-514.177" stroke="white" stroke-width="0.6"/>
+    <line x1="203.161" y1="856.962" x2="203.161" y2="-514.177" stroke="white" stroke-width="0.6"/>
+    <line x1="308.546" y1="856.962" x2="308.546" y2="-514.177" stroke="white" stroke-width="0.6"/>
+    <line x1="413.93" y1="856.962" x2="413.931" y2="-514.177" stroke="white" stroke-width="0.6"/>
+    <line x1="519.315" y1="856.962" x2="519.315" y2="-514.177" stroke="white" stroke-width="0.6"/>
+    <g opacity="0.47">
+    <rect x="97.9307" y="0.952179" width="105.604" height="105.692" fill="white" fill-opacity="0.25"/>
+    <rect x="97.9307" y="0.952179" width="105.604" height="105.692" fill="white" fill-opacity="0.25"/>
+    <rect x="97.9307" y="0.952179" width="105.604" height="105.692" fill="white" fill-opacity="0.25"/>
+    <rect x="97.9307" y="0.952179" width="105.604" height="105.692" fill="white" fill-opacity="0.25"/>
+    <rect x="98.4307" y="1.45218" width="104.604" height="104.692" stroke="white" stroke-opacity="0.25"/>
+    </g>
+    <g opacity="0.47">
+    <rect x="413.792" y="214.24" width="105.604" height="106.644" fill="white" fill-opacity="0.25"/>
+    <rect x="413.792" y="214.24" width="105.604" height="106.644" fill="white" fill-opacity="0.25"/>
+    <rect x="413.792" y="214.24" width="105.604" height="106.644" fill="white" fill-opacity="0.25"/>
+    <rect x="413.792" y="214.24" width="105.604" height="106.644" fill="white" fill-opacity="0.25"/>
+    <rect x="414.292" y="214.74" width="104.604" height="105.644" stroke="white" stroke-opacity="0.25"/>
+    </g>
+    <path d="M413.792 96.1702L413.792 119.022" stroke="url(#paint1_linear_2007_355)"/>
+    <path d="M425.208 107.596L402.375 107.596" stroke="url(#paint2_linear_2007_355)"/>
+    </g>
+    </g>
+    </g>
+    <defs>
+    <linearGradient id="paint0_linear_2007_355" x1="-60.0001" y1="-15.5" x2="-60.0001" y2="687" gradientUnits="userSpaceOnUse">
+    <stop stop-color="white"/>
+    <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_2007_355" x1="413.792" y1="119.022" x2="413.792" y2="96.1702" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#20504B" stop-opacity="0"/>
+    <stop offset="0.50284" stop-color="#20504B"/>
+    <stop offset="1" stop-color="#20504B" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="paint2_linear_2007_355" x1="402.375" y1="107.596" x2="425.208" y2="107.596" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#20504B" stop-opacity="0"/>
+    <stop offset="0.50284" stop-color="#20504B"/>
+    <stop offset="1" stop-color="#20504B" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip0_2007_355">
+    <rect width="616" height="672" rx="32" fill="white"/>
+    </clipPath>
+    </defs>
+    </svg>
+    
