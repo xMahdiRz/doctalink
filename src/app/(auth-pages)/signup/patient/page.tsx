@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { FormMessage, type Message } from "@/components/form-message"
 import { SubmitButton } from "@/components/submit-button"
 import LogoLight from "../../../../../public/logoLight"
+import { signUpAction } from "@/actions/auth"
 
 export default async function PatientSignUp({ searchParams }: { searchParams: Promise<Message> }) {
   const supabase = await createClient()
@@ -26,7 +27,7 @@ export default async function PatientSignUp({ searchParams }: { searchParams: Pr
         {/* Left side - Signup form */}
         <div className="w-1/2 p-12">
           <form className="max-w-md mx-auto mt-8">
-            <h1 className="text-[1.8rem] font-bold text-[#084B54] mb-1">Join DoctaLink!</h1>
+            <h1 className="text-[1.8rem] font-bold font-aeonik text-[#084B54] mb-1">Join DoctaLink!</h1>
             <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik mb-6">
               Already have an account?{" "}
               <Link href="/login" className="text-[#0AA462] font-medium">
@@ -41,6 +42,7 @@ export default async function PatientSignUp({ searchParams }: { searchParams: Pr
                 </Label>
                 <Input
                   name="firstName"
+                  id="firstName"
                   placeholder="John"
                   required
                   className="bg-white text-black border-[#ADADAD] h-12"
@@ -52,6 +54,8 @@ export default async function PatientSignUp({ searchParams }: { searchParams: Pr
                 </Label>
                 <Input
                   name="lastName"
+                  id="lastName"
+
                   placeholder="Doe"
                   required
                   className="bg-white text-black border-[#ADADAD] h-12"
@@ -88,11 +92,14 @@ export default async function PatientSignUp({ searchParams }: { searchParams: Pr
             <SubmitButton
               pendingText="Signing Up..."
               className="bg-[#20504B] font-aeonik w-full h-12 text-white rounded-md"
+              formAction={signUpAction}
             >
               Sign Up
             </SubmitButton>
 
             <FormMessage message={message} />
+
+            
 
             <div className="text-center mt-8">
               <p className="text-[#555555] text-xs">
@@ -112,10 +119,7 @@ export default async function PatientSignUp({ searchParams }: { searchParams: Pr
         </div>
 
         {/* Right side - Testimonial */}
-        <div
-          className="w-1/2 bg-[#20504B] p-12 flex rounded-3xl flex-col gap-36"
-          style={{ backgroundImage: "url('/auth.svg')" }}
-        >
+        <div className="w-1/2 bg-[#20504B] p-12 flex rounded-3xl bg-center bg-cover  flex-col gap-36 min-h-[38rem] " style={{ backgroundImage: "url('/join-bg.png')" }}>
           <div className="mb-16">
             <LogoLight />
           </div>

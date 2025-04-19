@@ -6,9 +6,6 @@ import EmailIcon from "../../../../public/letter-confirm";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { SubmitButton } from "@/components/submit-button";
-import { forgotPasswordAction } from "@/actions/auth";
 
 export default async function PatientSignUp() {
   const supabase = await createClient();
@@ -26,26 +23,28 @@ export default async function PatientSignUp() {
       <div className="w-full max-w-[83rem] flex rounded-xl overflow-hidden">
         {/* Left side */}
         <div className="w-1/2 p-12 place-content-center ">
-          <form className="max-w-md mx-auto flex-col justify-center mt-8 ">
+          <div className="max-w-md mx-auto flex-col justify-center mt-8 ">
             <EmailIcon />
             <h1 className="text-[2.2rem] font-aeonik font-bold">
-              <span className="text-[#084B54]">Forgot </span>
-              <span className="text-[#0AA462]">Password?</span>
+              <span className="text-[#084B54]">Check Your </span>
+              <span className="text-[#0AA462]">Email!</span>
             </h1>
             <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik mb-6">
-              No worries — we’ll send you a reset link. Just enter your email to get started.
+              We’ve sent an email to{" "}
+              <span className="text-[#0AA462] ">“you@example.com” </span> to
+              verify your email address. Please check your inbox and follow the
+              link to complete your registration.
             </p>
             <div>
-              <label htmlFor="email" className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik font-normal mb-4">Email</label>
-              <Input name="email" placeholder="you@example.com" className="w-full mb-4 rounded-md border border-[#ADADAD] " required />
-              
-                <SubmitButton formAction={forgotPasswordAction} className="bg-[#20504B] font-aeonik w-full h-full text-white rounded-md flex items-center justify-center">
-                  Go to Sign In
-                  <ArrowUpRight className="ml- h-5 w-5" />
-                </SubmitButton>
-              
+              <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik font-normal mb-2">Didn’t get the email? <span className="text-[#0AA462]">Resend it</span> or check your spam folder.</p>
+              <Link href="/sign-in" passHref>
+  <Button className="bg-[#20504B] font-aeonik w-full h-full text-white rounded-md flex items-center justify-center">
+    Go to Sign In
+    <ArrowUpRight className="ml- h-5 w-5" />
+  </Button>
+</Link>
             </div>
-          </form>
+          </div>
         </div>
 
         {/* Right side - Testimonial */}

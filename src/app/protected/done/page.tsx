@@ -1,16 +1,15 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import LogoLight from "../../../../public/logoLight";
-import EmailIcon from "../../../../public/letter-confirm";
+
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { SubmitButton } from "@/components/submit-button";
-import { forgotPasswordAction } from "@/actions/auth";
+import EmailIcon from "../../../../public/letter-confirm";
+import LogoLight from "../../../../public/logoLight";
+import LetterConfirmed from "../../../../public/letter-confirmed";
 
-export default async function PatientSignUp() {
+export default async function page() {
   const supabase = await createClient();
   const {
     data: { session },
@@ -26,26 +25,25 @@ export default async function PatientSignUp() {
       <div className="w-full max-w-[83rem] flex rounded-xl overflow-hidden">
         {/* Left side */}
         <div className="w-1/2 p-12 place-content-center ">
-          <form className="max-w-md mx-auto flex-col justify-center mt-8 ">
-            <EmailIcon />
+          <div className="max-w-md mx-auto flex-col justify-center mt-8 ">
+            <LetterConfirmed />
             <h1 className="text-[2.2rem] font-aeonik font-bold">
-              <span className="text-[#084B54]">Forgot </span>
-              <span className="text-[#0AA462]">Password?</span>
+              <span className="text-[#084B54]">All </span>
+              <span className="text-[#0AA462]">Done!</span>
             </h1>
-            <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik mb-6">
-              No worries — we’ll send you a reset link. Just enter your email to get started.
+            <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik font-normal mb-6">
+            Your password has been updated.
             </p>
             <div>
-              <label htmlFor="email" className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik font-normal mb-4">Email</label>
-              <Input name="email" placeholder="you@example.com" className="w-full mb-4 rounded-md border border-[#ADADAD] " required />
-              
-                <SubmitButton formAction={forgotPasswordAction} className="bg-[#20504B] font-aeonik w-full h-full text-white rounded-md flex items-center justify-center">
+              <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik font-normal mb-2">You can now sign in with your new password.</p>
+              <Link href="/sign-in" passHref>
+                <Button className="bg-[#20504B] font-aeonik w-full h-full text-white rounded-md flex items-center justify-center">
                   Go to Sign In
                   <ArrowUpRight className="ml- h-5 w-5" />
-                </SubmitButton>
-              
+                </Button>
+              </Link>
             </div>
-          </form>
+          </div>
         </div>
 
         {/* Right side - Testimonial */}

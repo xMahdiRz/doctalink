@@ -29,7 +29,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
         {/* Left side - Login form */}
         <div className="w-1/2 p-12">
           <form className="max-w-md mx-auto  mt-16">
-            <h1 className="text-[2.2rem] font-bold">
+            <h1 className="text-[2.2rem] font-aeonik font-bold">
               <span className="text-[#084B54]">Welcome </span>
               <span className="text-[#0AA462]">back!</span>
             </h1>
@@ -38,7 +38,10 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             </p>
 
             <div className="flex flex-col gap-1 mb-6">
-              <Label htmlFor="email" className="text-[#084B54] text-[0.87rem] font-aeonik font-normal">
+              <Label
+                htmlFor="email"
+                className="text-[#084B54] text-[0.87rem] font-aeonik font-normal"
+              >
                 Email
               </Label>
               <Input
@@ -51,7 +54,10 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
 
             <div className="flex flex-col gap-2 mb-6">
               <div className="flex justify-between items-center">
-                <Label htmlFor="password" className="text-[#084B54] text-[0.87rem] font-aeonik font-normal">
+                <Label
+                  htmlFor="password"
+                  className="text-[#084B54] text-[0.87rem] font-aeonik font-normal"
+                >
                   Password
                 </Label>
                 <Link
@@ -83,44 +89,57 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             <div className="text-center mt-6">
               <p className="text-[#555555] text-sm font-aeonik font-normal hover:underline">
                 Don't have an account?{" "}
-                <Link href="/user-selection" className="text-[#0AA462] font-medium">
+                <Link
+                  href="/user-selection"
+                  className="text-[#0AA462] font-medium"
+                >
                   Sign Up
                 </Link>
               </p>
             </div>
-
           </form>
-            <div className="text-center mt-8   ">
-              <p className="text-[#555555] text-xs">
-                By continuing, you agree to our{" "}
-                <Link href="/terms" className="underline">
-                  Terms
-                </Link>{" "}
-                and{" "}
-                <Link href="/privacy" className="underline">
-                  Privacy Policy
-                </Link>
-                ,<br />
-                and that cookies collection is used to improve your experience.
-              </p>
-            </div>
+          <div className="text-center mt-8   ">
+            <p className="text-[#555555] text-xs">
+              By continuing, you agree to our{" "}
+              <Link href="/terms" className="underline">
+                Terms
+              </Link>{" "}
+              and{" "}
+              <Link href="/privacy" className="underline">
+                Privacy Policy
+              </Link>
+              ,<br />
+              and that cookies collection is used to improve your experience.
+            </p>
+          </div>
         </div>
 
-        <div className="w-1/2 bg-[#20504B] p-12 flex rounded-3xl flex-col gap-36" style={{ backgroundImage: "url('/auth.svg')" }}>
+        <div
+          className="w-1/2 bg-[#20504B] p-12 flex rounded-3xl flex-col gap-36 min-h-[38rem]"
+          style={{ backgroundImage: "url('/auth.svg')" }}
+        >
           <div className="mb-16">
             <LogoLight />
           </div>
 
           <div className="mt-auto">
             <p className="text-[1.7rem] font-aeonik font-normal text-white tracking-tight mb-8">
-              "I found a specialist and booked an appointment in under 2 minutes. The process was smooth, clear, and
-              stress-free!"
+              "I found a specialist and booked an appointment in under 2
+              minutes. The process was smooth, clear, and stress-free!"
             </p>
 
             <div className="flex items-center gap-4">
-              <Image src="/Avatar.png" width={50} height={50} alt="avatar" className="rounded-full" />
+              <Image
+                src="/Avatar.png"
+                width={50}
+                height={50}
+                alt="avatar"
+                className="rounded-full"
+              />
               <div>
-                <h3 className="font-aeonik font-medium text-[1.4rem] text-white tracking-tight">Dr. Belkacem</h3>
+                <h3 className="font-aeonik font-medium text-[1.4rem] text-white tracking-tight">
+                  Dr. Belkacem
+                </h3>
                 <h5 className="text-[0.75rem] text-white/75 tracking-tight font-aeonik font-light">
                   Tech Consultant, Algiers
                 </h5>

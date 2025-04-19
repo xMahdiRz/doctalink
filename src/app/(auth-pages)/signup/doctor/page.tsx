@@ -25,8 +25,8 @@ export default async function DoctorSignUp({ searchParams }: { searchParams: Pro
       <div className="w-full max-w-[83rem] flex rounded-xl overflow-hidden">
         {/* Left side - Signup form */}
         <div className="w-1/2 p-12">
-          <form className="max-w-md mx-auto mt-8">
-            <h1 className="text-[1.8rem] font-bold text-[#084B54] mb-1">
+          <form className="max-w-md mx-auto mt-">
+            <h1 className="text-[1.8rem] font-bold font-aeonik text-[#084B54] mb-1">
               Hey <span className="text-[#0AA462]">Doctor</span>!
             </h1>
             <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik mb-6">
@@ -34,7 +34,7 @@ export default async function DoctorSignUp({ searchParams }: { searchParams: Pro
             </p>
 
             <div className="flex flex-col gap-1 mb-4">
-              <Label htmlFor="email" className="text-[#084B54] text-[0.87rem] font-aeonik font-normal">
+              <Label htmlFor="email" className="text-[#084B54] text-[0.87rem] font-aeonik ">
                 Email
               </Label>
               <Input
@@ -47,7 +47,7 @@ export default async function DoctorSignUp({ searchParams }: { searchParams: Pro
             </div>
 
             <div className="flex flex-col gap-1 mb-4">
-              <Label htmlFor="medicalId" className="text-[#084B54] text-[0.87rem] font-aeonik font-normal">
+              <Label htmlFor="medicalId" className="text-[#084B54] text-[0.87rem] font-aeonik ">
                 Medical License ID
               </Label>
               <Input
@@ -59,7 +59,7 @@ export default async function DoctorSignUp({ searchParams }: { searchParams: Pro
             </div>
 
             <div className="flex flex-col gap-1 mb-6">
-              <Label htmlFor="password" className="text-[#084B54] text-[0.87rem] font-aeonik font-normal">
+              <Label htmlFor="password" className="text-[#084B54] text-[0.87rem] font-aeonik ">
                 Password
               </Label>
               <Input
@@ -84,7 +84,7 @@ export default async function DoctorSignUp({ searchParams }: { searchParams: Pro
             <div className="text-center mt-4">
               <p className="text-[#555555] text-sm font-aeonik font-normal">
                 Already have an account?{" "}
-                <Link href="/login" className="text-[#0AA462] font-medium">
+                <Link href="/login" className="text-[#0AA462]">
                   Sign in
                 </Link>
               </p>
@@ -109,8 +109,8 @@ export default async function DoctorSignUp({ searchParams }: { searchParams: Pro
 
         {/* Right side - Testimonial */}
         <div
-          className="w-1/2 bg-[#20504B] p-12 flex rounded-3xl flex-col gap-36"
-          style={{ backgroundImage: "url('/auth.svg')" }}
+          className="w-1/2 bg-[#20504B] p-12 bg-center bg-cover flex rounded-3xl flex-col gap-36 min-h-[38rem]"
+          style={{ backgroundImage: "url('/join-doc-bg.png')" }}
         >
           <div className="mb-16">
             <LogoLight />
