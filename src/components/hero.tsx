@@ -14,7 +14,7 @@ export default function Hero() {
         <Trusted />
         <Effortless />
         <Description />
-        <div className="inline-flex items-center gap-6">
+        <div className="inline-flex items-center gap-2">
           <Book />
           <Button variant={"link"} className="text-white text-[0.87rem] font-aeonik " >
                 I'm a Doctor
@@ -64,10 +64,10 @@ const Description = () => {
 const Book = () => {
   return (
     <div className="flex  items-center ">
-      <button className="flex items-center bg-white rounded-full p-2 ">
-        <div className="flex justify-center items-center w-12 h-12 bg-[#00514c] rounded-full">
+      <button className="flex items-center bg-white rounded-full p-2 tracking-tight">
+        <div className="flex justify-center items-center w-8 h-8 bg-[#00514c] rounded-full">
           <svg
-            className="w-6 h-6 text-white"
+            className="w-4 h-4 text-white"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -81,12 +81,12 @@ const Book = () => {
             />
           </svg>
         </div>
-        <span className="text-xl  text-black px-3">Book Now</span>
+        <span className="text-sm text-aeonik px-2">Book Now</span>
       </button>
     </div>
   );
 };
-
+           
 const CardBooking = () => {
   const [specialization, setSpecialization] = useState("Cardiology");
   const [location, setLocation] = useState("Tebessa, Algeria");
