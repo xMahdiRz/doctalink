@@ -1,7 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import LogoLight from "../../../../public/logoLight";
+
 import EmailIcon from "../../../../public/letter-confirm";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
@@ -16,7 +16,6 @@ export default async function PatientSignUp() {
   if (session) {
     redirect("/protected");
   }
-
 
   return (
     <main className="flex items-center justify-center min-h-screen bg-white">
@@ -36,13 +35,17 @@ export default async function PatientSignUp() {
               link to complete your registration.
             </p>
             <div>
-              <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik font-normal mb-2">Didn’t get the email? <span className="text-[#0AA462]">Resend it</span> or check your spam folder.</p>
+              <p className="text-sm text-[#555555] tracking-[-0.025em] font-aeonik font-normal mb-2">
+                Didn’t get the email?{" "}
+                <span className="text-[#0AA462]">Resend it</span> or check your
+                spam folder.
+              </p>
               <Link href="/sign-in" passHref>
-  <Button className="bg-[#20504B] font-aeonik w-full h-full text-white rounded-md flex items-center justify-center">
-    Go to Sign In
-    <ArrowUpRight className="ml- h-5 w-5" />
-  </Button>
-</Link>
+                <Button className="bg-[#20504B] font-aeonik w-full h-full text-white rounded-md flex items-center justify-center">
+                  Go to Sign In
+                  <ArrowUpRight className="ml- h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -53,7 +56,7 @@ export default async function PatientSignUp() {
           style={{ backgroundImage: "url('/auth.svg')" }}
         >
           <div className="mb-16">
-            <LogoLight />
+            <Image src="/logoLight.svg" width={151} height={43} alt="logo" />
           </div>
 
           <div className="mt-auto">

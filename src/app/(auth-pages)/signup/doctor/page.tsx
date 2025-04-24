@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { FormMessage, type Message } from "@/components/form-message"
 import { SubmitButton } from "@/components/submit-button"
-import LogoLight from "../../../../../public/logoLight"
+import LogoLight from "@/public/logoLight.svg"
 
 export default async function DoctorSignUp({ searchParams }: { searchParams: Promise<Message> }) {
   const supabase = await createClient()
@@ -89,7 +89,7 @@ export default async function DoctorSignUp({ searchParams }: { searchParams: Pro
                 </Link>
               </p>
             </div>
-
+            
             <div className="text-center mt-8">
               <p className="text-[#555555] text-xs">
                 By continuing, you agree to our{" "}
@@ -113,7 +113,7 @@ export default async function DoctorSignUp({ searchParams }: { searchParams: Pro
           style={{ backgroundImage: "url('/join-doc-bg.png')" }}
         >
           <div className="mb-16">
-            <LogoLight />
+            <Image src="/logoLight.svg" width={151} height={43} alt="logo" />
           </div>
 
           <div className="mt-auto">

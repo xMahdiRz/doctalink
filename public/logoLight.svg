@@ -1,9 +1,4 @@
-import React from "react";
-
-const LogoLight = () => {
-  return (
-    <div>
-      <svg
+<svg
         width="151"
         height="43"
         viewBox="0 0 151 43"
@@ -32,8 +27,3 @@ const LogoLight = () => {
           </linearGradient>
         </defs>
       </svg>
-    </div>
-  );
-};
-
-export default LogoLight;

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { url } from "inspector";
 import Logo from "../../../../public/logo";
 import Image from "next/image";
-import LogoLight from "../../../../public/logoLight";
+
 
 export default async function Login(props: { searchParams: Promise<Message> }) {
   const supabase = await createClient();
@@ -118,9 +118,9 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
           className="w-1/2 bg-[#20504B] p-12 flex rounded-3xl flex-col gap-36 min-h-[38rem]"
           style={{ backgroundImage: "url('/auth.svg')" }}
         >
-          <div className="mb-16">
-            <LogoLight />
-          </div>
+           <div className="mb-16">
+                      <Image src="/logoLight.svg" width={151} height={43} alt="logo" />
+                    </div>
 
           <div className="mt-auto">
             <p className="text-[1.7rem] font-aeonik font-normal text-white tracking-tight mb-8">

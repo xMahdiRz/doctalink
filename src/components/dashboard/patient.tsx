@@ -8,7 +8,7 @@ export default function PatientDashboard({ user }: PatientDashboardProps) {
   return (
     <div className="flex flex-col gap-6">
       <div className="bg-green-100 text-green-800 text-sm p-3 px-5 rounded-md flex gap-3 items-center">
-        Patient Dashboard - Welcome {user.email}
+        Patient Dashboard - Welcome {user.user_metadata.firstName}
       </div>
       
       <h2 className="font-bold text-2xl">Patient Information</h2>
@@ -39,6 +39,13 @@ export default function PatientDashboard({ user }: PatientDashboardProps) {
           <h3 className="font-semibold mb-2">Medications</h3>
           <p className="text-gray-600">No active medications</p>
         </div>
+      </div> 
+
+
+
+
+      <div>
+        
       </div>
     </div>
   );

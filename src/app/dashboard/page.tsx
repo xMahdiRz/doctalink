@@ -5,19 +5,20 @@ import { getRoleFromUser } from "@/lib/rbac/rbac";
 import AuthButton from "@/components/header-auth";
 import PatientDashboard from "@/components/dashboard/patient";
 import DoctorDashboard from "@/components/dashboard/doctor";
+import Link from "next/link";
 
 export default async function Dashboard() {
-  // We use our new RBAC system to require authentication
+
   const user = await requireAuth();
   const userRole = getRoleFromUser(user);
 
   return (
     <div className="flex-1 w-full flex flex-col gap-12">
-      <div className="w-full">
+     <div className="w-full">
         <AuthButton />
-      </div>
+      </div> 
       
-      {/* Conditionally render the appropriate dashboard based on role */}
+    
       {userRole === "patient" && (
         <PatientDashboard user={user} />
       )}
