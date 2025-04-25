@@ -1,7 +1,7 @@
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { getUserLocale } from "@/services/locale";
-import "./globals.css";
+import "@/styles/globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -9,8 +9,9 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js App",
-  description: "A simple Next.js application",
+  title: "DoctoLink",
+  description:
+    "Easily book medical appointments in Algeria. Find trusted doctors, check availability, and manage your visits with ease.",
 };
 
 export default async function RootLayout({
@@ -23,16 +24,16 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-background text-foreground ltr:font-aeonik rtl:font-aeonik">
+      <body className="bg-background text-foreground font-aeonik ltr:font-aeonik rtl:font-aeonik">
         <NextIntlClientProvider messages={messages} locale={locale}>
-          {children}
-          {/* <ThemeProvider
+          <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >
-          </ThemeProvider> */}
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

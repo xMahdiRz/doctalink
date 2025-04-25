@@ -1,6 +1,3 @@
-
-
-
 export interface DoctorProps {
   id: string;
   full_name: string;
@@ -13,9 +10,7 @@ export interface DoctorProps {
   willaya_name?: string | null;
 }
 
-
-
-  export interface WillayaProps {
-    id: string;
-    name: string;
-  }
+export interface WillayaProps {
+  id: string;
+  name: string;
+}

@@ -26,7 +26,7 @@ type CtaProps = {
 
 const navItems: NavitemProps[] = [
   { name: "Home", link: "/" },
-  { name: "Service", link: "/service" },
+  { name: "Services", link: "/services" },
   { name: "About Us", link: "/about" },
   { name: "Contact", link: "/contact" },
   { name: "FAQ", link: "/faq" },
@@ -38,11 +38,8 @@ const CtaItems: CtaProps[] = [
 ];
 
 const Navbar = () => {
-
-  
-
   return (
-    <nav className="flex justify-between px-16 py-6 w-full  font-aeonik text-black">
+    <nav className="flex justify-between px-16 py-6 w-full  font-aeonik text-black items-center">
       <div>
         <Logo />
       </div>
@@ -50,13 +47,13 @@ const Navbar = () => {
       <div>
         <ul className="flex items-center gap-8">
           {navItems.map((item, index) =>
-            item.name === "Service" ? (
+            item.name === "Services" ? (
               <ServiceItem key={index} />
             ) : (
               <Link
                 href={item.link}
                 key={index}
-                className="text-[1rem] tracking-[3%] font-aeonik hover:text-[#20504B]"
+                className="text-base tracking-[3%] hover:text-[#20504B]"
               >
                 {item.name}
               </Link>
@@ -69,12 +66,12 @@ const Navbar = () => {
         <ul className="flex gap-4 items-center">
           {CtaItems.map((item, index) =>
             item.name === "Get Started" ? (
-                <GetStartedButton key={index} />
+              <GetStartedButton key={index} />
             ) : (
               <Link
                 href={item.link}
                 key={index}
-                className="text-[1rem] font-medium hover:text-[#20504B]"
+                className="text-base hover:text-[#20504B]"
               >
                 {item.name}
               </Link>
