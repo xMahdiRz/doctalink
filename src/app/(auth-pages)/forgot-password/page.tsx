@@ -1,7 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import LogoLight from "../../../../public/logoLight";
+import LogoLight from "../../../../public/logoLight.svg";
 import EmailIcon from "../../../../public/letter-confirm";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";

@@ -60,7 +60,7 @@ export default async function PatientSignUp() {
           </div>
 
           <div className="mt-auto">
-            <p className="text-[1.7rem] font-aeonik font-normal text-white tracking-tight mb-8">
+            <p className="text-[1.75rem]  font-aeonik font-normal text-white tracking-tight mb-8">
               "I found a specialist and booked an appointment in under 2
               minutes. The process was smooth, clear, and stress-free!"
             </p>

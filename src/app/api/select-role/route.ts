@@ -11,8 +11,8 @@ export async function POST(request: NextRequest) {
   }
 
   if (role === "patient") {
-    return NextResponse.redirect(new URL("/signup/patient", request.url));
+    return NextResponse.redirect(new URL("/sign-up/patient", request.url));
   } else {
-    return NextResponse.redirect(new URL("/signup/doctor", request.url));
+    return NextResponse.redirect(new URL("/sign-up/doctor", request.url));
   }
 }

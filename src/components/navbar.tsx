@@ -34,12 +34,12 @@ const navItems: NavitemProps[] = [
 
 const CtaItems: CtaProps[] = [
   { name: "Sign In", link: "/sign-in" },
-  { name: "Get Started", link: "/register" },
+  { name: "Get Started", link: "/sign-up" },
 ];
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between px-16 py-6 w-full  font-aeonik text-black items-center">
+    <nav className="flex w-full items-center justify-between px-16 py-6 font-aeonik text-black">
       <div>
         <Logo />
       </div>
@@ -57,13 +57,13 @@ const Navbar = () => {
               >
                 {item.name}
               </Link>
-            )
+            ),
           )}
         </ul>
       </div>
 
       <div>
-        <ul className="flex gap-4 items-center">
+        <ul className="flex items-center gap-4">
           {CtaItems.map((item, index) =>
             item.name === "Get Started" ? (
               <GetStartedButton key={index} />
@@ -75,7 +75,7 @@ const Navbar = () => {
               >
                 {item.name}
               </Link>
-            )
+            ),
           )}
         </ul>
       </div>
@@ -91,7 +91,7 @@ export function ServiceItem() {
       <SelectTrigger className="w-fit">
         <SelectValue
           placeholder="Service"
-          className="hover:text-[#20504B] text-black"
+          className="text-black hover:text-[#20504B]"
         />
       </SelectTrigger>
       <SelectContent>

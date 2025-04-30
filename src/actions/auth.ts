@@ -17,7 +17,7 @@ export const signUpAction = async (formData: FormData) => {
   if (!email || !password) {
     return encodedRedirect(
       "error",
-      "/signup/patient",
+      "/sign-up/patient",
       "Email and password are required"
     );
   }
@@ -37,7 +37,7 @@ export const signUpAction = async (formData: FormData) => {
 
   if (error) {
     console.error(error.code + " " + error.message);
-    return encodedRedirect("error", "/signup/patient", error.message);
+    return encodedRedirect("error", "/sign-up/patient", error.message);
   } else {
     return encodedRedirect(
       "success",

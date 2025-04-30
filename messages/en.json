@@ -1,5 +1,31 @@
 {
-    "HomePage": {
-      "title": "Hello world!"
-    }
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Hero": {
+    "trusted": {
+      "badge": "Trusted",
+      "text": "Best Medical Service in Algeria"
+    },
+    "title": "Effortless Scheduling for Better Care",
+    "description": "Discover reliable healthcare professionals, check open times instantly, and manage your visits with ease. Designed to make your health journey smoother from start to finish.",
+    "bookNow": "Book Now",
+    "doctorLink": "I'm a Doctor"
+  },
+  "BookingCard": {
+    "title": "Book Appointment",
+    "specialization": {
+      "label": "Specialization",
+      "default": "Cardiology"
+    },
+    "location": {
+      "label": "Location",
+      "default": "Tebessa, Algeria"
+    },
+    "date": {
+      "label": "Date",
+      "default": "12 Apr 2025"
+    },
+    "searchButton": "Search"
   }
+}

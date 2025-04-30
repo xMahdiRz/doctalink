@@ -21,6 +21,7 @@ const config = {
     extend: {
       fontFamily: {
         aeonik: ["Aeonik", "sans-serif"],
+        ibm: ["IBM", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

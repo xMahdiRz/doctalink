@@ -23,8 +23,8 @@ export default async function RootLayout({
   const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-background text-foreground font-aeonik ltr:font-aeonik rtl:font-aeonik">
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
+      <body className="bg-background text-foreground font-aeonik ltr:font-aeonik rtl:font-ibm">
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProvider
             attribute="class"
