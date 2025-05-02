@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import Logo from "../../public/logo";
+import Image from "next/image";
 import GetStartedButton from "./btn-register";
 import { cn } from "@/lib/utils";
 import {
@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Video, FileText, Calendar, PillBottle, Activity } from "lucide-react";
 
-// Service items with their details
 const services = [
   {
     title: "Teleconsultation",
@@ -50,7 +49,8 @@ const services = [
   },
 ];
 
-// Interface for ListItem props
+const navItems = ["Home", "Services", "About Us", "Contact", "FAQ"];
+
 interface ListItemProps extends React.HTMLAttributes<HTMLAnchorElement> {
   title: string;
   href: string;
@@ -58,7 +58,6 @@ interface ListItemProps extends React.HTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
 }
 
-// ListItem component for service dropdown
 const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
   ({ className, title, children, icon, ...props }, ref) => (
     <li>
@@ -85,56 +84,45 @@ ListItem.displayName = "ListItem";
 const Navbar = () => {
   return (
     <nav className="flex w-full max-w-none items-center justify-between px-16 py-6 font-aeonik text-black">
-      <Logo />
+      <Image src="/logo.svg" width={149} height={27} alt="logo" />
 
       <NavigationMenu>
         <NavigationMenuList>
-          {/* Home Link */}
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild>
-              <Link href="/">
-                <div
-                  className={cn(navigationMenuTriggerStyle(), "font-normal hover:text-[#20504B]")}
-                >
-                  Home
-                </div>
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-
-          {/* Services Dropdown */}
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="font-normal hover:text-[#20504B]">
-              Services
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {services.map((service) => (
-                  <ListItem
-                    key={service.title}
-                    title={service.title}
-                    href={service.href}
-                    icon={service.icon}
-                  >
-                    {service.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          {/* Static Nav Links */}
-          {["About Us", "Contact", "FAQ"].map((item) => (
+          {navItems.map((item) => (
             <NavigationMenuItem key={item}>
-              <NavigationMenuLink asChild>
-                <Link href={`/${item.toLowerCase().replace(" ", "")}`}>
-                  <div
-                    className={cn(navigationMenuTriggerStyle(), "font-normal hover:text-[#20504B]")}
-                  >
-                    {item}
-                  </div>
-                </Link>
-              </NavigationMenuLink>
+              {item === "Services" ? (
+                // Services Dropdown
+                <>
+                  <NavigationMenuTrigger className="font-normal hover:text-[#20504B]">
+                    Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      {services.map((service) => (
+                        <ListItem
+                          key={service.title}
+                          title={service.title}
+                          href={service.href}
+                          icon={service.icon}
+                        >
+                          {service.description}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </>
+              ) : (
+                // Regular Nav Links
+                <NavigationMenuLink asChild>
+                  <Link href={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "")}`}>
+                    <div
+                      className={cn(navigationMenuTriggerStyle(), "font-normal hover:text-[#20504B]")}
+                    >
+                      {item}
+                    </div>
+                  </Link>
+                </NavigationMenuLink>
+              )}
             </NavigationMenuItem>
           ))}
         </NavigationMenuList>
