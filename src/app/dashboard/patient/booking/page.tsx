@@ -1,18 +1,61 @@
 "use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import { Input } from "@/components/ui/input";
 import { MapPin, Stethoscope, Search } from "lucide-react";
 import Link from "next/link";
+import { FilterDoctors, GetSpecialities, GetWillayas } from "@/actions/actions";
+import { Specialty, Willaya } from "@/types/types";
+import Cardfind from "@/components/card-find";
 
 export default function BookingPage() {
-  const [specialization, setSpecialization] = useState<string>("");
-  const [location, setLocation] = useState<string>("");
+  const [specialization, setSpecialization] = useState<Specialty[] | undefined>([]);
+  const [selectedSpecialty, setSelectedSpecialty] = useState<string>("");
+  const [location, setLocation] = useState<Willaya[] | undefined>([]);
+  const [selectedLocation, setselectedLocation] = useState<string>("");
+  const [filteredDoctors, setFilteredDoctors] = useState<any>();
+  const yes = false;
   const [date, setDate] = useState<Date | undefined>(new Date());
+
+  useEffect(() => {
+    async function FetchSpecialities() {
+      const data = await GetSpecialities();
+      if (data) {
+        setSpecialization(data);
+      }
+    }
+
+    async function FetchWillayas() {
+      const data = await GetWillayas();
+      if (data) {
+        setLocation(data);
+      }
+    }
+    FetchSpecialities();
+    FetchWillayas();
+  }, []);
+
+  const handleFiletingDoctors = async (
+    selectedSpecialty: string,
+    selectedLocation: string,
+    date: string
+  ) => {
+    try {
+      const result = await FilterDoctors(selectedSpecialty, selectedLocation, date, );
+      
+      if (result && result.data) {
+        setFilteredDoctors(result.data);
+      } else {
+        console.warn("No doctors found or invalid response:", result);
+        setFilteredDoctors([]);
+      }
+    } catch (error) {
+      console.error("Error fetching doctors:", error);
+      setFilteredDoctors([]);
+    }
+  };
 
   return (
     <div className="flex flex-col justify-between px-8 py-5 font-aeonik text-xl">
@@ -23,8 +66,8 @@ export default function BookingPage() {
         Search by doctors by their location, and specialization
       </p>
 
-      <Card className="mb-8 border border-sky-300 bg-[#FAFBFC] p-6 shadow-sm rounded-lg">
-        <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3 ">
+      <Card className="mb-8 rounded-lg border border-sky-300 bg-[#FAFBFC] p-6 shadow-sm">
+        <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3">
           {/* Specialization Filter */}
           <div>
             <div className="mb-2 flex items-center gap-2">
@@ -34,15 +77,15 @@ export default function BookingPage() {
             <div className="relative">
               <select
                 className="h-12 w-full cursor-pointer appearance-none rounded-md border bg-white px-4 font-aeonik text-sm text-[#748191] focus:outline-none focus:ring-2 focus:ring-teal-500"
-                value={specialization}
-                onChange={(e) => setSpecialization(e.target.value)}
+                value={selectedSpecialty}
+                onChange={(e) => setSelectedSpecialty(e.target.value)}
               >
                 <option value="">Select specialization</option>
-                <option value="cardiology">Cardiology</option>
-                <option value="dermatology">Dermatology</option>
-                <option value="neurology">Neurology</option>
-                <option value="orthopedics">Orthopedics</option>
-                <option value="pediatrics">Pediatrics</option>
+                {specialization?.map((item) => (
+                  <option key={item.id} value={item.name}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                 <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
@@ -64,16 +107,16 @@ export default function BookingPage() {
             </div>
             <div className="relative">
               <select
-                className="h-12 w-full cursor-pointer appearance-none rounded-md border bg-white px-4 text-sm text-[#748191] focus:outline-none focus:ring-2 focus:ring-teal-500"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
+                className="h-12 w-full cursor-pointer appearance-none rounded-md border bg-white px-4 font-aeonik text-sm text-[#748191] focus:outline-none focus:ring-2 focus:ring-teal-500"
+                value={selectedLocation}
+                onChange={(e) => setselectedLocation(e.target.value)}
               >
                 <option value="">Select location</option>
-                <option value="new-york">New York</option>
-                <option value="los-angeles">Los Angeles</option>
-                <option value="chicago">Chicago</option>
-                <option value="houston">Houston</option>
-                <option value="miami">Miami</option>
+                {location?.map((item) => (
+                  <option key={item.id} value={item.name}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                 <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
@@ -111,9 +154,9 @@ export default function BookingPage() {
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
-                    className="h-12 w-full justify-start rounded-md border bg-white text-left font-aeonik text-sm text-[#748191] hover:bg-gray-50"
+                    className="h-12 w-full justify-start rounded-md border bg-white text-left font-aeonik text-sm tracking-widest text-[#748191] hover:bg-gray-50"
                   >
-                    Pick a Date
+                    {date ? date.toLocaleDateString() : "Pick a Date"}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto rounded-md border bg-white p-0">
@@ -133,7 +176,11 @@ export default function BookingPage() {
         <div className="flex w-full flex-row-reverse gap-4">
           <Button
             size="default"
-            className="flex gap-4  bg-[#20504B] font-aeonik text-white"
+            className="flex gap-4 bg-[#20504B] font-aeonik text-white"
+            onClick={() =>
+              handleFiletingDoctors(selectedSpecialty, selectedLocation, date?.toISOString() || "")
+            }
+            
           >
             <Search className="h-4 w-4" />
             Search Doctors
@@ -144,21 +191,20 @@ export default function BookingPage() {
         </div>
       </Card>
 
-      
-      <div className="py-5 text-center  ">
-        <h3 className="mb-2 text-xl text-[#013238] font-aeonik">No search filters applied yet</h3>
-        <p className="mb-4 text-[#748191] text-sm tracking-tight text-center ">
-          Select a date, location, or specialization above and click
-          <br />
-          "Search Doctors" to find available healthcare professionals.
-        </p>
-        <Link
-          href="/dashboard/patient/doctors"
-          className="flex items-center justify-center font-aeonik gap-1 text-sm text-[#00747A] hover:text-teal-700"
-        >
-          View all doctors <span className="ml-1">→</span>
-        </Link>
-      </div>
+      {filteredDoctors && filteredDoctors.length > 0 ? (
+  <div className="py-5 flex flex-wrap gap-3">
+    {filteredDoctors.map((doc: any) => (
+      <Cardfind key={doc.id} doctor={doc} />
+    ))}
+  </div>
+) : (
+  <div className="py-5 text-center">
+    <h3 className="mb-2 font-aeonik text-xl text-[#013238]">No doctors found</h3>
+    <p className="mb-4 text-center text-sm tracking-tight text-[#748191]">
+      Try adjusting your filters to find available healthcare professionals.
+    </p>
+  </div>
+)}
     </div>
   );
 }

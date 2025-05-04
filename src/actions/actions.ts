@@ -1,4 +1,5 @@
 "use server"
+import { Specialty, Willaya } from "@/types/types";
 import { supabase } from "@/utils/supabase/client";
 import { createClient } from "@/utils/supabase/server";
 
@@ -268,7 +269,6 @@ export async function getDoctorCards(): Promise<{
     console.error('Error fetching doctors:', error);
     return undefined;
   }
-  console.log(data)
   return data.map((d: any) => ({
     id: d.id,
     full_name: d.full_name,
@@ -289,4 +289,55 @@ export async function getDoctorCards(): Promise<{
 
 
 
-//next step is:   
+export async function GetSpecialities(): Promise<Specialty[] | undefined> {
+  const {data, error}  = await supabase.from('specialties').select('*');
+  if (error) {
+    console.error('Error fetching specialties:', error);
+    return undefined;
+  }
+  return data ?? undefined;  
+}
+
+export async function GetWillayas(): Promise<Willaya[] | undefined> {
+  const {data, error}  = await supabase.from('willayas').select('*');
+  if (error) {
+    console.error('Error fetching specialties:', error);
+    return undefined;
+  }
+  return data ?? undefined;  
+}
+
+
+
+export async function FilterDoctors(specialty: string, location: string, date: string) {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("doctors")
+    .select(`
+      id,
+      full_name,
+      commune:communes(name),
+      willaya:willayas(name),
+      specialty:specialties(name),
+      address,
+      appointments(selected_date)
+    `)
+    .eq("specialties.name", specialty)
+    .eq("willayas.name", location);
+
+  if (error) {
+    console.error("Error filtering doctors:", error);
+    return { data: [] };
+  }
+
+  const availableDoctors = data?.filter((doc: any) => {
+    return !doc.appointments.some(
+      (appt: any) => appt.selected_date === date
+    );
+  });
+
+  console.log(data)
+
+  return { data: availableDoctors };
+}

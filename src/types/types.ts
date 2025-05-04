@@ -14,3 +14,15 @@ export interface WillayaProps {
   id: string;
   name: string;
 }
+
+
+export interface Specialty {
+  id : string;
+  name: string;
+  description: string;
+}
+
+export interface Willaya {
+  id : string;
+  name: string;
+}
