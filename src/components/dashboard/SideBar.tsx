@@ -3,7 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, User, Calendar, Stethoscope, Building, Heart, HelpCircle, Settings, LogOut, ArrowLeft } from "lucide-react";
+import {
+  Home,
+  User,
+  Calendar,
+  Stethoscope,
+  Building,
+  Heart,
+  HelpCircle,
+  Settings,
+  LogOut,
+  ArrowLeft,
+} from "lucide-react";
+import { Button } from "../ui/button";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -55,24 +67,24 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="w-64 h-screen  flex flex-col">
-      <div className="p-4  border-b flex justify-between">
-        <Image src="/logo.svg" alt="DoctalLink" width={120} height={35} />
-        <button>
+    <aside className="flex  w-64 flex-col px-4 py-6">
+      <div className="mb-4 flex justify-between border-b pb-4">
+        <Image src="/logo-dashboard-patient.svg" alt="DoctalLink" width={120} height={35} />
+        <Button size={"icon"} variant={"outline"}>
           <ArrowLeft />
-        </button>
+        </Button>
       </div>
-      
-      <div className="flex-1 px-4   overflow-y-auto">
-        <div className="mb-6">
-          <h3 className="text-[0.64rem] uppercase text-[#748191] font-aeonik font-normal mb-2">GENERAL</h3>
+
+      <div className="">
+        <div className="mb-4">
+          <h3 className="mb-2 font-aeonik text-xs uppercase text-[#748191]">GENERAL</h3>
           {navItemsGeneral.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 p-2 rounded mb-2 text-sm font-aeonik transition-colors ${
+              className={`mb-2 flex items-center gap-3 rounded p-2 font-aeonik text-sm transition-colors ${
                 pathname === item.href
-                  ? "bg-white text-[#025964] "
+                  ? "bg-white text-[#025964]"
                   : "text-[#0B0B0B] hover:bg-gray-200"
               }`}
             >
@@ -81,17 +93,17 @@ export default function Sidebar() {
             </Link>
           ))}
         </div>
-        
-      <div className="mb-6">
-          <h3 className="text-[0.64rem] uppercase text-[#748191] font-aeonik font-normal mb-2">APPOINTMENTS</h3>
+
+        <div className="mb-4">
+          <h3 className="mb-2 font-aeonik text-[0.64rem] uppercase text-[#748191]">APPOINTMENTS</h3>
           {navItemsAppointments.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 p-2 rounded mb-2 transition-colors ${
+              className={`mb-2 flex items-center gap-3 rounded p-2 font-aeonik text-sm transition-colors ${
                 pathname === item.href
-                    ? "bg-white text-[#025964] "
-                  : "text-[#0B0B0B] hover:bg-gray-200"  
+                  ? "bg-white text-[#025964]"
+                  : "text-[#0B0B0B] hover:bg-gray-200"
               }`}
             >
               <item.icon size={18} />
@@ -99,18 +111,17 @@ export default function Sidebar() {
             </Link>
           ))}
         </div>
-        
-      <div className="">
-          <h3 className="text-[0.64rem] uppercase text-[#748191] font-aeonik font-normal mb-2">EXPLORE</h3>
+
+        <div className="mb-4">
+          <h3 className="mb-2 font-aeonik text-[0.64rem] uppercase text-[#748191]">EXPLORE</h3>
           {navItemsExplore.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 p-2 rounded mb-2 transition-colors ${
+              className={`mb-2 flex items-center gap-3 rounded p-2 font-aeonik text-sm transition-colors ${
                 pathname === item.href
-                ? "bg-white text-[#025964] "
+                  ? "bg-white text-[#025964]"
                   : "text-[#0B0B0B] hover:bg-gray-200"
-                  
               }`}
             >
               <item.icon size={18} />
@@ -119,25 +130,23 @@ export default function Sidebar() {
           ))}
         </div>
       </div>
-      
-      <div className="mt-auto border-t border-gray-200 p-4">
+
+      <div className=" ">
         {navItemsBottom.map((item) => (
           <Link
             key={item.name}
             href={item.href}
-            className={`flex items-center gap-3 p-2 rounded mb-2 transition-colors ${
+            className={`mb-2 flex items-center gap-3 rounded p-2 font-aeonik text-sm transition-colors${
               pathname === item.href
                 ? "bg-blue-600 text-white"
-                : `text-gray-700 hover:bg-gray-200 ${item.className || ''}`
+                : `text-gray-700 hover:bg-gray-200 ${item.className || ""}`
             }`}
           >
             <item.icon size={18} />
             <span>{item.name}</span>
           </Link>
         ))}
-        <div className="text-xs text-gray-400 mt-4 text-center">
-          © 2025 DoctalLink Inc.
-        </div>
+        <div className="mt-4 text-center text-xs text-gray-400">© 2025 DoctalLink Inc.</div>
       </div>
     </aside>
   );

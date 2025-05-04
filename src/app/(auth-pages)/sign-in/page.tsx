@@ -32,7 +32,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
             <span className="text-[#0AA462]">back!</span>
           </h1>
           <p className="mb-4 font-aeonik text-sm tracking-[-0.025em] text-[#555555]">
-            Doctor or patient? Sign in to continue.
+            Doctor or patient? Sign In to continue.
           </p>
 
           <div className="mb-2 flex flex-col gap-1">
